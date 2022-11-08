@@ -4,61 +4,70 @@ class Paddle extends React.Component {
   constructor(props) {
     super(props);
 
-    this.paddle0 = document.getElementById('Paddle0');
-    this.paddle1 = document.getElementById('Paddle1');
+    state = {
+      mounted: false,
+      yOffset: 0,
+      delta: 10, // Step length
+    }
 
     this.isMoving = false;
     window.addEventListener("keydown", event => {
       this.isMoving = true;
       switch (event.key) {
         case 'w': 
-          this.move(this.paddle0); 
+          this.setState({
+            yOffset: this.state.yOffset - this.state.delta,
+          })
           break;
         case 's': 
-          this.move(this.paddle0); 
+          this.setState({
+            yOffset: this.state.yOffset + this.state.delta,
+          })
           break;
         case 'o': 
-          this.move(this.paddle1); 
+          this.setState({
+            yOffset: this.state.yOffset - this.state.delta,
+          })
           break;
         case 'l': 
-          this.move(this.paddle1); 
+          this.setState({
+            yOffset: this.state.yOffset + this.state.delta,
+          })
           break;
         default: break;
       }
     });
-    window.addEventListener("keyup", event => {
-      switch (event.key) {
-        case 'w': 
-        case 's': 
-          this.move(this.paddle0, 1);
-          break;
-        case 'o':
-        case 'l':
-          this.move(this.paddle1, 1);
-          break;
-        default: break;
-      }
-    })
   }
 
-  move(what, stop, where) {
-    if (stop) {
-      //stop what
-    } else if (where) {
-      //what go up
+  // componentDidMount() {
+  //   setTimeout(() => {
+  //     this.setState({mounted: true})
+  //   }, 2000)
+  // }
+
+  move(where) {
+    if (where) {
+      this.setState({
+        yOffset: this.state.yOffset - this.state.delta,
+      })
     } else {
-      //what go down
+      this.setState({
+        yOffset: this.state.yOffset + this.state.delta,
+      })
     }
   }
 
   render() {
-    return (<div className='Paddle' id={this.props.id} style={{
-      display: 'block',
-      position: 'absolute',
-      backgroundColor: 'white',
-      height: '80px',
-      width: '15px',
-    }}/>)
+    return (
+      <div className='Paddle' id={this.props.id} style={{
+        display: 'block',
+        position: 'absolute',
+        backgroundColor: 'white',
+        height: '80px',
+        width: '15px',
+        top: this.state.yOffset + 'px',
+      }}/>
+    )
   }
 }
 
