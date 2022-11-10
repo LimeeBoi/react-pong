@@ -29,7 +29,7 @@ class Paddle extends React.Component {
           break;
         default: break;
       }
-      console.log(event.key);
+      //console.log(event.key);
     });
   }
 
