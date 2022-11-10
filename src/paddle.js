@@ -4,57 +4,39 @@ class Paddle extends React.Component {
   constructor(props) {
     super(props);
 
-    state = {
+    this.state = {
       mounted: false,
       yOffset: 0,
-      delta: 10, // Step length
+      delta: 40, // Step length
+      fastDelta: 80, // Faster step length
+      keys: {}
     }
 
-    this.isMoving = false;
     window.addEventListener("keydown", event => {
-      this.isMoving = true;
-      switch (event.key) {
-        case 'w': 
-          this.setState({
-            yOffset: this.state.yOffset - this.state.delta,
-          })
+      const yOffset = this.state.yOffset;
+      if (this.state.mounted) switch (event.key) {
+        case this.props.keyUp: // Listen for the key that will move up this paddle
+          if (yOffset > 0) this.setState({yOffset: yOffset - this.state.delta});
           break;
-        case 's': 
-          this.setState({
-            yOffset: this.state.yOffset + this.state.delta,
-          })
+        case this.props.fastKeyUp: // Listen for key to move up quickly
+          if (yOffset > 0) this.setState({yOffset: yOffset - this.state.fastDelta});
           break;
-        case 'o': 
-          this.setState({
-            yOffset: this.state.yOffset - this.state.delta,
-          })
+        case this.props.keyDown: // Listen for the key that will move this paddle down
+          if (yOffset < 720) this.setState({yOffset: yOffset + this.state.delta});
           break;
-        case 'l': 
-          this.setState({
-            yOffset: this.state.yOffset + this.state.delta,
-          })
+        case this.props.fastKeyDown:
+          if (yOffset < 720) this.setState({yOffset: yOffset + this.state.fastDelta});
           break;
         default: break;
       }
+      console.log(event.key);
     });
   }
 
-  // componentDidMount() {
-  //   setTimeout(() => {
-  //     this.setState({mounted: true})
-  //   }, 2000)
-  // }
-
-  move(where) {
-    if (where) {
-      this.setState({
-        yOffset: this.state.yOffset - this.state.delta,
-      })
-    } else {
-      this.setState({
-        yOffset: this.state.yOffset + this.state.delta,
-      })
-    }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({mounted: true})
+    }, 2000)
   }
 
   render() {
