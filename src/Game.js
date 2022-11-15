@@ -36,8 +36,8 @@ class Game extends React.Component {
   render() {
     return (
       <div className='game'>
-        <Paddle id='Paddle0' keysDown={this.state.keysDown} moveFunc={this.getFunc} />
-        <Paddle id='Paddle1' keysDown={this.state.keysDown} moveFunc={this.getFunc}/>
+        <Paddle id='Paddle0' keysDown={this.state.keysDown}  />
+        <Paddle id='Paddle1' keysDown={this.state.keysDown}  />
       </div>
     )
   }

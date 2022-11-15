@@ -3,11 +3,10 @@ import React from 'react';
 class Paddle extends React.Component {
   constructor(props) {
     super(props);
-    this.props.moveFunc(this.move);
 
     this.state = {
       mounted: false,
-      yOffset: 0,
+      y: 0, // yPosition of paddle 
       delta: 40, // Step length
       fastDelta: 80, // Faster step length
       keysDown: this.props.keysDown, // *keys down*
