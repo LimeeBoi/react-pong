@@ -1,11 +1,23 @@
 
-#Paddle0 {
+.Paddle0 {
   top: 10%;
   left: 8%;
 }
 
-#Paddle1 {
+.Paddle1 {
   top: 10%;
   right: 8%;
+}
+
+.hold-on {
+  position: absolute;
+  color: white;
+  left: 47%;
+  top: 50%;
+  text-align: center;
+  border-style: inset;
+  border-color: white;
+  width: 160px;
+  height: 30px;
 }
 

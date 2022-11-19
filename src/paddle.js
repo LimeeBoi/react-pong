@@ -3,13 +3,13 @@ import React from 'react';
 class Paddle extends React.Component {
   constructor(props) {
     super(props);
-    this.props.getMoveFunc(this.move, this.props.id);
+    this.props.getMoveFunc(this.move, this.props.className === 'Paddle0' ? 'moveFunc0' : 'moveFunc1');
 
     this.state = {
       mounted: false,
       y: 0, // yPosition of paddle 
-      delta: 40, // Step length
-      fastDelta: 80, // Faster step length
+      delta: 0.4, // Step length
+      fastDelta: 0.8, // Faster step length
     };
   }
 
@@ -21,21 +21,21 @@ class Paddle extends React.Component {
 
   move = (keyArr, keyBindArr) => { // keyBindArr: [moveUp, MoveQuicklyUp, moveDown, MoveQuicklyDown]
     const {y, delta, fastDelta} = this.state; 
-    if (this.state.mounted) keyArr.map((key) => keyBindArr.map((keyBind, i) => {
-      if (key === keyBind && this.state.mounted) switch (i) {
-        case 0: this.setState({y: y - delta}); break;
-        case 1: this.setState({y: y - fastDelta}); break;
-        case 2: this.setState({y: y + delta}); break;
-        case 3: this.setState({y: y + fastDelta}); break;
+    
+    if (this.state.mounted) for (let i=0; i<keyArr.length; i++) for (let j=0; j<keyBindArr.length; j++) {
+      if (keyArr[i] === keyBindArr[j] && this.state.mounted) switch (j) {
+        case 0: if (y > 0) this.setState({y: y - delta}); break;
+        case 1: if (y > 0) this.setState({y: y - fastDelta}); break;
+        case 2: if (y < 720) this.setState({y: y + delta}); break;
+        case 3: if (y < 720) this.setState({y: y + fastDelta}); break;
         default: break;
       }
-      return null;
-    }))
+    }
   }
 
   render() {
     return (
-      <div className='Paddle' id={this.props.id} style={{
+      <div className={this.props.className} style={{
         display: 'block',
         position: 'absolute',
         backgroundColor: 'white', // erm... just plain css

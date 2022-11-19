@@ -1,27 +1,36 @@
-import React from 'react';
+import { Component } from 'react';
 import Paddle from './Paddle';
 
-class Game extends React.Component {
+class Game extends Component {
   constructor(props) {
     super(props);
 
-    window.addEventListener('keydown', (event) => {
-      const {keysDown, moveFunc0, moveFunc1} = this.state;
-      keysDown.push(event.key);
-      moveFunc0(keysDown, ['w', 'e', 's', 'd']);
-      moveFunc1(keysDown, ['o', 'l', 'i', 'k']);
-    });
-    window.addEventListener('keyup', (event) => {
-      const {keysDown} = this.state;
-      keysDown.splice(keysDown.indexOf(event.key), 1);
-    });
-
+    this.moveFunc0 = () => {};
+    this.moveFunc1 = () => {};
+    this.setInfoText = this.props.sendTextFunc();
     this.state = {
       mounted: false,
       keysDown: [],
-      moveFunc0: () => {},
-      moveFunc1: () => {},
     }
+
+    console.log("setInfoText:", this.setInfoText);
+
+    setTimeout(() => {
+      window.addEventListener('keydown', (event) => {
+        const {moveFunc0, moveFunc1} = this;
+        const keysDown = this.state.keysDown
+        if (!keysDown.find(el => el === event.key)) keysDown.push(event.key);
+        var listener = setInterval(function() {
+          if (!keysDown) clearInterval(listener);
+          moveFunc0(keysDown, ['w', 'e', 's', 'd']);
+          moveFunc1(keysDown, ['o', 'i', 'l', 'k']);
+        }, 10);
+      });
+      window.addEventListener('keyup', (event) => {
+        const {keysDown} = this.state;
+        keysDown.splice(keysDown.indexOf(event.key), 1);
+      });
+    }, 3000);
   }
 
   componentDidMount() {
@@ -30,18 +39,28 @@ class Game extends React.Component {
     }, 2000);
   }
 
-  getFunc = (inFunc, id) => {
-    if (typeof inFunc !== 'function') throw new Error('getFunc: param not is not a function');
-    else if (typeof id !== 'string') throw new Error('getFunc: id param is not a string');
-    else if (id === 'Paddle0') this.setState({moveFunc0: inFunc});
-    else if (id === 'Paddle1') this.setState({moveFunc1: inFunc})
+  getFunc = (func, funcDest) => {
+    if (typeof func !== 'function') throw new Error('getFunc: first param not is not a function');
+    else if (typeof funcDest !== 'string') throw new Error('getFunc: second param is not a string');
+    else switch (funcDest) {
+      case 'moveFunc0': 
+        this.moveFunc0 = func;
+        break;
+      case 'moveFunc1':
+        this.moveFunc1 = func;
+        break;
+      case 'setInfoText':
+        this.setInfoText = func;
+        break;
+      default: break;
+    }
   }
 
   render() {
     return (
       <div className='game'>
-        <Paddle id='Paddle0' keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
-        <Paddle id='Paddle1' keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
+        <Paddle className='Paddle0' keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
+        <Paddle className='Paddle1' keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
       </div>
     );
   }
