@@ -12,9 +12,9 @@ class Game extends Component {
       mounted: false,
       keysDown: [],
     }
-
+    
     console.log("setInfoText:", this.setInfoText);
-
+    
     setTimeout(() => {
       window.addEventListener('keydown', (event) => {
         const {moveFunc0, moveFunc1} = this;
