@@ -1,24 +1,17 @@
-import { Component } from "react";
+import { useState } from 'react';
 
-class InfoBox extends Component {
-  constructor(props) {
-    super(props);
-    this.props.getTextFunc((text) => {
-      this.setState({textVal: text});
-    });
-
-    this.state = {
-      textVal: null,
-    };
-
-    window.addEventListener('click', () => {
-      console.log("textVal:", this.state.textVal);
-    });
-  }
-
-  render() {
-    return <h2 className='info-box-text'>{this.state.textVal}</h2>
-  }
+function InfoBox({ getTextFunc }) {
+  const [textVal, setTextVal] = useState('helo');
+  setTimeout(() => {
+    getTextFunc(text => {
+      setTextVal(text);
+    })
+  }, 10);
+  window.addEventListener('click', () => {
+    console.log('textVal:', textVal);
+  });
+  
+  return (<h2 className='info-box-text'>{textVal}</h2>);
 };
 
 export default InfoBox;

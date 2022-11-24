@@ -6,20 +6,39 @@ import InfoBox from './InfoBox';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.sendVal = null;
+    this.sendVal = () => {};
+    this.state = {
+      isMounted: false,
+      isSendValReady: false,
+    };
+
+    setInterval(() => {
+      if (this.sendVal && this.state.isMounted) {
+        this.setState({isSendValReady: true});
+        clearInterval(this);
+      }
+    }, 20);
   }
 
   getFunc = (func) => {
     if (typeof func !== 'function') throw new Error('getFunc: param not function');
     else this.sendVal = func;
-    console.log(this.sendVal) ;
+    console.log('getFunc: func:', func);
+  }
+
+  componentDidMount() {
+    this.setState({isMounted: true});
   }
 
   render() {
-    return (
-      <div className="App">
+    return this.state.isSendValReady ? (
+      <div className='App'>
         <InfoBox getTextFunc={this.getFunc} />
         <Game sendTextFunc={this.sendVal} />
+      </div>
+    ) : (
+      <div className='App'>
+        <InfoBox getTextFunc={this.getFunc} />
       </div>
     );
   }

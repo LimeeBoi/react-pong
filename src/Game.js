@@ -7,13 +7,13 @@ class Game extends Component {
 
     this.moveFunc0 = () => {};
     this.moveFunc1 = () => {};
-    this.setInfoText = this.props.sendTextFunc();
+    this.setInfoText = this.props.sendTextFunc;
     this.state = {
       mounted: false,
       keysDown: [],
     }
     
-    console.log("setInfoText:", this.setInfoText);
+    console.log('setInfoText:', this.setInfoText);
     
     setTimeout(() => {
       window.addEventListener('keydown', (event) => {
