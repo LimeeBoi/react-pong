@@ -5,18 +5,18 @@ class Game extends Component {
   constructor(props) {
     super(props);
 
-    this.moveFunc0 = () => {};
-    this.moveFunc1 = () => {};
+    this.moveFunc0 = () => {}; //funcs that will be replaced by a moving func that moves a child component up :]
+    this.moveFunc1 = () => {}; // same ^; except moves component down
     this.setInfoText = this.props.sendTextFunc;
     this.state = {
-      mounted: false,
-      keysDown: [],
+      mounted: false, //react doesn't let u setState() when the component isn't mounted :[
+      keysDown: [], // *self-explanetory*
     }
     
     setTimeout(() => {
-      window.addEventListener('keydown', (event) => {
+      window.addEventListener('keydown', (event) => { //listen for keys down
         const {moveFunc0, moveFunc1} = this;
-        const keysDown = this.state.keysDown
+        const keysDown = this.state.keysDown.splice();
         if (!keysDown.find(el => el === event.key)) keysDown.push(event.key);
         var listener = setInterval(function() {
           if (!keysDown) clearInterval(listener);
@@ -29,6 +29,10 @@ class Game extends Component {
         keysDown.splice(keysDown.indexOf(event.key), 1);
       });
     }, 3000);
+
+    setTimeout(() => {
+      this.setInfoText('yeetusss');
+    }, 5000);
   }
 
   componentDidMount() {
