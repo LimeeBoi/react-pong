@@ -13,8 +13,6 @@ class Game extends Component {
       keysDown: [],
     }
     
-    console.log('setInfoText:', this.setInfoText);
-    
     setTimeout(() => {
       window.addEventListener('keydown', (event) => {
         const {moveFunc0, moveFunc1} = this;

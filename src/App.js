@@ -12,18 +12,22 @@ class App extends Component {
       isSendValReady: false,
     };
 
-    setInterval(() => {
+    console.log('e');
+
+    let isvrListener = setInterval(() => { //is sendval ready listener
       if (this.sendVal && this.state.isMounted) {
         this.setState({isSendValReady: true});
-        clearInterval(this);
+        clearInterval(isvrListener);
+        console.log('e');
       }
+
     }, 20);
   }
 
   getFunc = (func) => {
     if (typeof func !== 'function') throw new Error('getFunc: param not function');
     else this.sendVal = func;
-    console.log('getFunc: func:', func);
+    console.log('a');
   }
 
   componentDidMount() {
