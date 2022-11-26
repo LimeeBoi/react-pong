@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import Paddle from './Paddle';
+import Ball from './Ball';
 
 class Game extends Component {
   constructor(props) {
@@ -7,19 +8,19 @@ class Game extends Component {
 
     this.moveFunc0 = () => {}; //funcs that will be replaced by a moving func that moves a child component up :]
     this.moveFunc1 = () => {}; // same ^; except moves component down
-    this.setInfoText = this.props.sendTextFunc;
     this.state = {
       mounted: false, //react doesn't let u setState() when the component isn't mounted :[
       keysDown: [], // *self-explanetory*
-    }
+    };
     
     setTimeout(() => {
+      this.props.setText('Go!');
       window.addEventListener('keydown', (event) => { //listen for keys down
         const {moveFunc0, moveFunc1} = this;
-        const keysDown = this.state.keysDown.splice();
+        const {keysDown} = this.state;
         if (!keysDown.find(el => el === event.key)) keysDown.push(event.key);
-        var listener = setInterval(function() {
-          if (!keysDown) clearInterval(listener);
+        var keyListener = setInterval(function() {
+          if (!keysDown) clearInterval(keyListener);
           moveFunc0(keysDown, ['w', 'e', 's', 'd']);
           moveFunc1(keysDown, ['o', 'i', 'l', 'k']);
         }, 10);
@@ -28,11 +29,7 @@ class Game extends Component {
         const {keysDown} = this.state;
         keysDown.splice(keysDown.indexOf(event.key), 1);
       });
-    }, 3000);
-
-    setTimeout(() => {
-      this.setInfoText('yeetusss');
-    }, 5000);
+    }, 4000);
   }
 
   componentDidMount() {
@@ -63,6 +60,7 @@ class Game extends Component {
       <div className='game'>
         <Paddle className='Paddle0' keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
         <Paddle className='Paddle1' keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
+        <Ball />
       </div>
     );
   }

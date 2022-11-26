@@ -6,15 +6,15 @@ import InfoBox from './InfoBox';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.sendVal = () => {};
+    this.setText = () => {};
     this.state = {
       isMounted: false,
-      isSendValReady: false,
+      isSetTextReady: false,
     };
 
-    let isvrListener = setInterval(() => { //is sendval ready listener 
-      if (this.sendVal && this.state.isMounted) {
-        this.setState({isSendValReady: true});
+    let isvrListener = setInterval(() => { //is setText ready listener 
+      if (this.setText && this.state.isMounted) {
+        this.setState({isSetTextReady: true});
         clearInterval(isvrListener);
       }
     }, 20);
@@ -22,7 +22,7 @@ class App extends Component {
 
   getFunc = (func) => {
     if (typeof func !== 'function') throw new Error('getFunc: param not function');
-    else this.sendVal = func;
+    else this.setText = func;
   }
 
   componentDidMount() {
@@ -30,10 +30,10 @@ class App extends Component {
   }
 
   render() {
-    return this.state.isSendValReady ? (
+    return this.state.isSetTextReady ? (
       <div className='App'>
         <InfoBox getTextFunc={this.getFunc} />
-        <Game sendTextFunc={this.sendVal} />
+        <Game setText={this.setText} />
       </div>
     ) : (
       <div className='App'>
