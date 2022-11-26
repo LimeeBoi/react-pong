@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-class Ball extends Component {
+class Ball extends Component { // STILL MAKING THIS COMPONENT
   constructor(props) {
     super(props);
     this.state = {

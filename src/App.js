@@ -9,35 +9,35 @@ class App extends Component {
     this.setText = () => {};
     this.state = {
       isMounted: false,
-      isSetTextReady: false,
+      isSetTextReady: false, 
     };
 
-    let isvrListener = setInterval(() => { //is setText ready listener 
+    let isvrListener = setInterval(() => { //is setText ready listener: see if InfoBox component sent func back up
       if (this.setText && this.state.isMounted) {
         this.setState({isSetTextReady: true});
-        clearInterval(isvrListener);
+        clearInterval(isvrListener); 
       }
     }, 20);
   }
 
   getFunc = (func) => {
     if (typeof func !== 'function') throw new Error('getFunc: param not function');
-    else this.setText = func;
+    else this.setText = func; // GeT Da fUnC
   }
 
   componentDidMount() {
-    this.setState({isMounted: true});
+    this.setState({isMounted: true}); // Tell this component if its mounted
   }
 
   render() {
     return this.state.isSetTextReady ? (
       <div className='App'>
-        <InfoBox getTextFunc={this.getFunc} />
-        <Game setText={this.setText} />
+        <InfoBox getTextFunc={this.getFunc} /> {/* If InfoBox is ready! */}
+        <Game setText={this.setText} paddleSpeed={10} />
       </div>
     ) : (
       <div className='App'>
-        <InfoBox getTextFunc={this.getFunc} />
+        <InfoBox getTextFunc={this.getFunc} /> {/* Or not */}
       </div>
     );
   }

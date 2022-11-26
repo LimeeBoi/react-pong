@@ -3,7 +3,7 @@ import React from 'react';
 class Paddle extends React.Component {
   constructor(props) {
     super(props);
-    this.props.getMoveFunc(this.move, this.props.className === 'Paddle0' ? 'moveFunc0' : 'moveFunc1');
+    this.props.getMoveFunc(this.move, this.props.className === 'Paddle0' ? 'moveFunc0' : 'moveFunc1'); // Give our move func to the Game component.
     //this.colissionLine =
 
     this.state = {
@@ -22,9 +22,8 @@ class Paddle extends React.Component {
 
   move = (keyArr, keyBindArr) => { // keyBindArr: [moveUp, MoveQuicklyUp, moveDown, MoveQuicklyDown]
     const {y, delta, fastDelta} = this.state; 
-    
     if (this.state.mounted) for (let i=0; i<keyArr.length; i++) for (let j=0; j<keyBindArr.length; j++) {
-      if (keyArr[i] === keyBindArr[j] && this.state.mounted) switch (j) {
+      if (keyArr[i] === keyBindArr[j] && this.state.mounted) switch (j) { // Converts key (on keyboard) instuctions and implements them into movements.
         case 0: if (y > 0) this.setState({y: y - delta}); break;
         case 1: if (y > 0) this.setState({y: y - fastDelta}); break;
         case 2: if (y < 690) this.setState({y: y + delta}); break;
@@ -36,7 +35,7 @@ class Paddle extends React.Component {
 
   render() {
     return (
-      <div className={this.props.className} style={{
+      <div className={this.props.className} style={{ // Classic paddle CSS :>
         display: 'block',
         position: 'absolute',
         backgroundColor: 'white', // erm... just plain css
