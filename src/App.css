@@ -5,7 +5,7 @@
 .info-box-text {
   position: absolute;
   color: white;
-  left: 47%;
+  left: 45.5%;
   top: 90%;
   text-align: center;
   border-style: inset;
@@ -14,7 +14,7 @@
   height: 30px;
 }
 
-.test-border-y, .test-border-x {
-  top: 10%;
-  left: 8%;
+.ball {
+  top: 50%;
+  left: 50%;
 }

@@ -9,8 +9,8 @@ class Paddle extends React.Component {
     this.state = {
       mounted: false,
       y: 350, // yPosition of paddle 
-      delta: 0.4, // Step length
-      fastDelta: 0.8, // Faster step length
+      delta: 1, // Step length
+      fastDelta: 1.8, // Faster step length
     };
   }
 

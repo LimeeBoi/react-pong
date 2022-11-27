@@ -10,7 +10,7 @@ class Ball extends Component { // STILL MAKING THIS COMPONENT
 
   render() {
     return (
-      <div style={{
+      <div className='ball' style={{
         display: 'block',
         backgroundColor: 'white',
         position: 'absolute',

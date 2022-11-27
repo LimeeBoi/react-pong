@@ -2,6 +2,7 @@ import { Component } from 'react';
 import './App.css';
 import Game from './Game';
 import InfoBox from './InfoBox';
+import Slider from './Slider';
 
 class App extends Component {
   constructor(props) {
@@ -33,7 +34,8 @@ class App extends Component {
     return this.state.isSetTextReady ? (
       <div className='App'>
         <InfoBox getTextFunc={this.getFunc} /> {/* If InfoBox is ready! */}
-        <Game setText={this.setText} paddleSpeed={10} />
+        <Game setText={this.setText} />
+        <Slider left={460} />
       </div>
     ) : (
       <div className='App'>

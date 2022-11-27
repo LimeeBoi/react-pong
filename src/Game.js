@@ -10,26 +10,28 @@ class Game extends Component {
     this.state = {
       mounted: false, //react doesn't let u setState() when the component isn't mounted :[
       keysDown: [], // *self-explanetory*
+      numIntervals: 0,
     };
     
     setTimeout(() => { // Lets the interval below accelerate (for some reason that happens)
-      this.props.setText('Go!');
+      this.props.setText('Ready.');
       window.addEventListener('keydown', (event) => { //listen for keys down
         const {moveFunc0, moveFunc1} = this;
-        const {keysDown} = this.state;
+        const {keysDown, numIntervals, mounted} = this.state;
+        
         if (!keysDown.find(el => el === event.key)) keysDown.push(event.key); // push key detected to keysDown arr if key is not already in keysDown arr
-        console.log("paddleSpeed:", this.props.paddleSpeed);
-        var keyListener = setInterval(function() { // made an interval so paddle movements look animated :)
-          if (!keysDown) clearInterval(keyListener);
-          moveFunc0(keysDown, ['w', 'e', 's', 'd']);
-          moveFunc1(keysDown, ['o', 'i', 'l', 'k']);
-        }, this.props.paddleSpeed);
+          const keyListener = setInterval(function() { // made an interval so paddle movements look animated :)
+            if (!keysDown || numIntervals > 3) clearInterval(keyListener);
+            moveFunc0(keysDown, ['w', 'e', 's', 'd']);
+            moveFunc1(keysDown, ['o', 'i', 'l', 'k']);
+          }, 10);
+          if (mounted) this.setState({numIntervals: numIntervals+1});
       });
       window.addEventListener('keyup', (event) => {
         const {keysDown} = this.state;
         keysDown.splice(keysDown.indexOf(event.key), 1); // Remove keys from keysDown arr when the key is not down anymore.
       });
-    }, 2000); 
+    }, 1000); 
   }
 
   componentDidMount() {
