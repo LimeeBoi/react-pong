@@ -35,7 +35,7 @@ class App extends Component {
       <div className='App'>
         <InfoBox getTextFunc={this.getFunc} /> {/* If InfoBox is ready! */}
         <Game setText={this.setText} />
-        <Slider left={460} />
+        <Slider left={45.5} />
       </div>
     ) : (
       <div className='App'>
