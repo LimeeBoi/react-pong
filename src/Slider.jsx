@@ -1,8 +1,15 @@
 import { useState } from "react";
 import arrow from './arrow.svg';
+import { RouteProvider, createBrowserRouter, Route } from 'react-router-dom';
 
 function Slider({ left }) {
   const [isOpen, setIsOpen] = useState(0);
+  const helpPage = createBrowserRouter([
+    {
+      path: '/',
+      element: <div>yeet</div>, 
+    },
+  ]);
 
   return (
     <div className='slider' >
