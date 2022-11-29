@@ -1,4 +1,5 @@
 import { useState } from "react";
+import arrow from './arrow.svg';
 
 function Slider({ left }) {
   const [isOpen, setIsOpen] = useState(0);
@@ -12,7 +13,7 @@ function Slider({ left }) {
         borderBottomRightRadius: '20%',
         position: 'absolute',
         top: isOpen ? '0px' : '-60px',
-        left: left + '%',
+        left: left + 0.75 + '%',
         width: '100px',
         height: '60px',
       }}>
@@ -23,19 +24,11 @@ function Slider({ left }) {
         }}>HELP</a>
       </div>
       <div className='slider-tab' onClick={() => {setIsOpen(!isOpen)}} style={{
-        display: 'block',
-        color: 'lightgrey',
-        backgroundColor: 'rgb(30, 30, 30)',
-        textAlign: 'center',
-        borderBottomLeftRadius: '20%',
-        borderBottomRightRadius: '20%',
-        position: 'absolute',
+        
         top: isOpen ? '60px' : '0px',
         left: left + 2.88 + '%',
-        width: '40px',
-        height: '15px',
-        fontFamily: 'source-code-pro, Menlo, Monaco, Consolas, monospace',
-      }}>v</div>
+        
+      }}><img className='slider-tab-icon' src={arrow} alt='helo' /></div>
     </div>
   )
 };
