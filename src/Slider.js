@@ -7,15 +7,8 @@ function Slider({ left }) {
   return (
     <div className='slider' >
       <div className='slider-body' style={{
-        display: 'block',
-        backgroundColor: 'rgb(30, 30, 30)',
-        borderBottomLeftRadius: '20%',
-        borderBottomRightRadius: '20%',
-        position: 'absolute',
         top: isOpen ? '0px' : '-60px',
         left: left + 0.75 + '%',
-        width: '100px',
-        height: '60px',
       }}>
         <a href='helloSorryThereIsNoHelpButtonImStillWorkingOnIt' onClick={() => {document.write('nope')}} style={{
           position: 'relative',

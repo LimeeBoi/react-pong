@@ -11,12 +11,7 @@ class Ball extends Component { // STILL MAKING THIS COMPONENT
   render() {
     return (
       <div className='ball' style={{
-        display: 'block',
-        backgroundColor: 'white',
-        position: 'absolute',
-        borderRadius: '50%',
-        height: '25px',
-        width: '25px',
+        
       }}/>
     )
   }
