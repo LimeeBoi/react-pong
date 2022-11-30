@@ -1,35 +1,29 @@
 import { useState } from "react";
-import arrow from './arrow.svg';
-import { RouteProvider, createBrowserRouter, Route } from 'react-router-dom';
+import helpIco from './help.ico';
 
-function Slider({ left }) {
+function Slider({ left, openTimeLength }) {
   const [isOpen, setIsOpen] = useState(0);
-  const helpPage = createBrowserRouter([
-    {
-      path: '/',
-      element: <div>yeet</div>, 
-    },
-  ]);
+  const [yOffset, setYOffset] = useState(0);
 
   return (
-    <div className='slider' >
-      <div className='slider-body' style={{
-        top: isOpen ? '0px' : '-60px',
-        left: left + 0.75 + '%',
-      }}>
-        <a href='helloSorryThereIsNoHelpButtonImStillWorkingOnIt' onClick={() => {document.write('nope')}} style={{
-          position: 'relative',
-          left: (left - 17) + '%', 
-          top: 27 + '%',
-        }}>HELP</a>
+    <>
+      <div className='slider-body'>
+        <p style={{color: 'white'}} >idklol</p>
       </div>
-      <div className='slider-tab' onClick={() => {setIsOpen(!isOpen)}} style={{
-        
-        top: isOpen ? '60px' : '0px',
+      <div className='slider-tab' onClick={() => {
+        setIsOpen(!isOpen);
+        if (isOpen) setTimeout(() => {
+          setYOffset(0);
+        }, openTimeLength * 1000);
+        else setTimeout(() => {setYOffset(60)}, openTimeLength * 1000);
+      }} style={{
         left: left + 2.88 + '%',
-        
-      }}><img className='slider-tab-icon' src={arrow} alt='helo' /></div>
-    </div>
+        top: yOffset + 'px',
+        animation: isOpen ? `pull-${isOpen ? 'down' : 'up'}-slider-tab ${openTimeLength}s ease` : '',
+      }}>
+        <img className='slider-tab-icon' src={helpIco} alt='helo' />
+      </div>
+    </>
   )
 };
 

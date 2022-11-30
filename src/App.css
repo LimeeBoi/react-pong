@@ -15,7 +15,6 @@
 }
 
 .ball {
-  display: block;
   background-color: white;
   position: absolute;
   border-radius: 50%;
@@ -26,24 +25,33 @@
 }
 
 .slider-body {
-  display: block;
   background-color: rgb(30, 30, 30);
   border-bottom-left-radius: 20%;
   border-bottom-right-radius: 20%;
   position: absolute;
   width: 100px;
   height: 60px;
+  left: 46.25%;
+  top: -60px;
 }
 
 .slider-tab {
-  display: block;
   position: absolute;
   width: 40px;
   height: 15px;
-  color: lightgrey;
   background-color: rgb(30, 30, 30);
   text-align: center;
   font-family: source-code-pro, Menlo, Monaco, Consolas, monospace;
   border-bottom-left-radius: 20%;
   border-bottom-right-radius: 20%;
 }
+
+.slider-tab-icon {
+  height: 12px;
+  width: 12px;
+}
+
+@keyframes pull-up-slider-tab {from {top: 60px} to {top: 0px}}
+@keyframes pull-down-slider-tab {from {top: 0px} to {top: 60px}}
+@keyframes pull-up-slider-body {from {top: 0px} to {top: -60px}}
+@keyframes pull-down-slider-body {from {top: -60px} to {top: 0px}}
