@@ -35,11 +35,12 @@ class App extends Component {
       <div className='App'>
         <InfoBox getTextFunc={this.getFunc} /> {/* If InfoBox is ready! */}
         <Game setText={this.setText} />
-        <Slider left={45.5} openTimeLength={.8} />
+        <Slider left={45.5} openTimeLength={.8} callHelpPage={() => console.log('hallp')}/>
       </div>
     ) : (
       <div className='App'>
         <InfoBox getTextFunc={this.getFunc} /> {/* Or not */}
+        <Slider left={45.5} openTimeLength={.8} callHelpPage={() => console.log('HAALLLPP')}/>
       </div>
     );
   }
