@@ -8,7 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.setText = () => {};
-    this.callHelpPage = () => {};
+    this.handleClick = () => {console.log('halp')};
     this.state = {
       isMounted: false,
       isSetTextReady: false, 
@@ -41,7 +41,7 @@ class App extends Component {
       <div className='App'>
         <InfoBox getTextFunc={this.getFunc} /> {/* If InfoBox is ready! */}
         <Game setText={this.setText} />
-        <Slider left={45.5} openTimeLength={.8} callHelpPage={console.log('halp')}/>
+        <Slider left={45.5} openTimeLength={.8} handleClick={this.handleClick}/>
       </div>
     ) : (
       <div className='App'>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import helpIco from './help.ico';
 
-function Slider({ left, openTimeLength, callHelpPage }) {
+function Slider({ left, openTimeLength, handleClick }) {
   const [isOpen, setIsOpen] = useState(null); // *is open*
   const [yOffset, setYOffset] = useState(null); // keep track of the y val for the slider :>
   const [hbc, setHbc] = useState(null); // has been clicked
@@ -12,7 +12,7 @@ function Slider({ left, openTimeLength, callHelpPage }) {
         top: yOffset - 60 + 'px',
         animation: hbc ? `pull-${isOpen ? 'down' : 'up'}-slider-body ${openTimeLength}s ease` : null, // see if slider should be open or closed
       }}>
-        <button onClick={callHelpPage}>
+        <button onClick={handleClick}>
           Help
         </button>
       </div>
