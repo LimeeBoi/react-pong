@@ -12,7 +12,9 @@ function Slider({ left, openTimeLength, callHelpPage }) {
         top: yOffset - 60 + 'px',
         animation: hbc ? `pull-${isOpen ? 'down' : 'up'}-slider-body ${openTimeLength}s ease` : null, // see if slider should be open or closed
       }}>
-        <p style={{color: 'blue', textAlign: 'center'}} onClick={() => callHelpPage()}>halp</p> {/* this is here for now... */}
+        <button onClick={callHelpPage}>
+          Help
+        </button>
       </div>
       <div className='slider-tab' onClick={() => {
         setIsOpen(!isOpen);
@@ -22,9 +24,9 @@ function Slider({ left, openTimeLength, callHelpPage }) {
       }} style={{
         left: left + 2.88 + '%',
         top: yOffset + 'px',
-        animation: hbc ? `pull-${isOpen ? 'down' : 'up'}-slider-tab ${openTimeLength}s ease` : null,
+        animation: hbc ? `pull-${isOpen ? 'down' : 'up'}-slider-tab ${openTimeLength}s ease` : null, // calculate what animation to 
       }}>
-        <img className='slider-tab-icon' src={helpIco} alt='helo' />
+        <img className='slider-tab-icon' src={helpIco} alt='HELO'/>
       </div>
     </>
   )

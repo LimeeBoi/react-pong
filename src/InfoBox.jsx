@@ -4,7 +4,7 @@ function InfoBox({ getTextFunc }) {
   const [textVal, setTextVal] = useState('Hold on...'); // Text state declaration
   getTextFunc(text => { // Give func to App Component
     setTextVal(text); 
-  });
+  }, 'setTextVal');
   
   return (<h2 className='info-box-text' onClick={() => {
     if (textVal === 'Ready.') setTimeout(() => {

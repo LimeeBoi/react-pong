@@ -8,6 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.setText = () => {};
+    this.callHelpPage = () => {};
     this.state = {
       isMounted: false,
       isSetTextReady: false, 
@@ -21,9 +22,14 @@ class App extends Component {
     }, 20);
   }
 
-  getFunc = (func) => {
+  getFunc = (func, funcDest ) => {
     if (typeof func !== 'function') throw new Error('getFunc: param not function');
-    else this.setText = func; // GeT Da fUnC
+    else switch (funcDest) {
+      case 'setTextVal': 
+        this.setText = func;
+        break
+      default: break;
+    }
   }
 
   componentDidMount() {
@@ -35,12 +41,12 @@ class App extends Component {
       <div className='App'>
         <InfoBox getTextFunc={this.getFunc} /> {/* If InfoBox is ready! */}
         <Game setText={this.setText} />
-        <Slider left={45.5} openTimeLength={.8} callHelpPage={() => console.log('hallp')}/>
+        <Slider left={45.5} openTimeLength={.8} callHelpPage={console.log('halp')}/>
       </div>
     ) : (
       <div className='App'>
         <InfoBox getTextFunc={this.getFunc} /> {/* Or not */}
-        <Slider left={45.5} openTimeLength={.8} callHelpPage={() => console.log('HAALLLPP')}/>
+        <Slider left={45.5} openTimeLength={.8}/>
       </div>
     );
   }

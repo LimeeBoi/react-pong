@@ -49,6 +49,10 @@
   width: 12px;
 }
 
+.help-page {
+  background-color: #fff;
+}
+
 @keyframes pull-up-slider-tab {from {top: 60px} to {top: 0px}}
 @keyframes pull-down-slider-tab {from {top: 0px} to {top: 60px}}
 @keyframes pull-up-slider-body {from {top: 0px} to {top: -60px}}
