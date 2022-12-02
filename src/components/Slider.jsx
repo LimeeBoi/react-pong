@@ -1,5 +1,5 @@
 import { useState } from "react";
-import helpIco from './help.ico';
+import helpIco from '../images/help.ico';
 
 function Slider({ left, openTimeLength, handleClick }) {
   const [isOpen, setIsOpen] = useState(null); // *is open*

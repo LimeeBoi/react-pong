@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import Paddle from './Paddle';
-import Ball from '../Ball';
+import Ball from './Ball';
 
 class Game extends Component {
   constructor(props) {

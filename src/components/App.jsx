@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import './App.css';
+import '../App.css';
 import Game from './Game';
 import InfoBox from './InfoBox';
 import Slider from './Slider';
@@ -8,7 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.setText = () => {};
-    this.handleClick = () => {console.log('halp')};
+    this.handleClick = () => document.write();
     this.state = {
       isMounted: false,
       isSetTextReady: false, 
