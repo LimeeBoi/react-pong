@@ -1,5 +1,4 @@
 import { useState } from "react";
-import helpIco from '../images/help.ico';
 
 function Slider({ left, openTimeLength, sliderBody}) {
   const [isOpen, setIsOpen] = useState(null); // *is open*
@@ -11,9 +10,7 @@ function Slider({ left, openTimeLength, sliderBody}) {
         left: left + .15 + '%',
         top: yOffset - 60 + 'px',
         animation: hbc ? `pull-${isOpen ? 'down' : 'up'}-slider-body ${openTimeLength}s ease` : null, // see if slider should be open or closed
-      }}>
-        {sliderBody}
-      </div>
+      }}>{sliderBody}</div>
       <div className='slider-tab' onClick={() => {
         setIsOpen(!isOpen);
         setHbc(true);
@@ -23,9 +20,7 @@ function Slider({ left, openTimeLength, sliderBody}) {
         left: left + 2.88 + '%',
         top: yOffset + 'px',
         animation: hbc ? `pull-${isOpen ? 'down' : 'up'}-slider-tab ${openTimeLength}s ease` : null, // calculate what animation to 
-      }}>
-        <img className='slider-tab-icon' src={helpIco} alt='HELO'/>
-      </div>
+      }}>\v/</div>
     </>
   )
 };

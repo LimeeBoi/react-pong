@@ -1,3 +1,22 @@
-.help-page {
-  background-color: #fff;
+.help-page {color: #e0ffff}
+
+/* hp: help page */
+.hp-title { 
+  font-weight: 900;
+  font-size: xx-large;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+.hp-pong-header {
+  color: white;
+  margin-left: 5%;
+  font-size: 25px;
+
+}
+
+.hp-pong-parag {
+  color: white;
+  font-weight: 325;
+  font-size: 19px;
 }

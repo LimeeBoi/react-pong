@@ -12,11 +12,11 @@ class Game extends Component {
       mounted: false, //react doesn't let u setState() when the component isn't mounted :[
       keysDown: [], // *self-explanetory*
       numIntervals: 0,
-      textVal: null, // info-box text value
+      textVal: 'hold on...', // info-box text value
+      isReady: false,
     };
     
     setTimeout(() => { // Lets the interval below accelerate (for some reason that happens)
-      if(this.state.mounted) this.setState({textVal: 'Ready.'});
       window.addEventListener('keydown', (event) => { //listen for keys down
         const {moveFunc0, moveFunc1} = this;
         const {keysDown, numIntervals, mounted} = this.state;
@@ -33,13 +33,17 @@ class Game extends Component {
         const {keysDown} = this.state;
         keysDown.splice(keysDown.indexOf(event.key), 1); // Remove keys from keysDown arr when the key is not down anymore.
       });
-    }, 1000); 
+      setTimeout(() => {if (this.state.mounted) this.setState({
+        textVal: 'Ready.',
+        isReady: true,
+      })}, 500);
+    }, 500); 
   }
 
   componentDidMount() {
     setTimeout(() => { // annoying moundted detector so I don't have to deal with errors :]
       this.setState({mounted: true});
-    }, 2000);
+    }, 500);
   }
 
   getFunc = (func, funcDest) => { // Gets a func from the Paddle components so the Game component can control the paddles.
@@ -61,9 +65,14 @@ class Game extends Component {
       <div className='game'>
         <Paddle className='paddle0' keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
         <Paddle className='paddle1' keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
-        <div className='game-text' onClick={() => {
-          for (let i=0; i<3; i++) setTimeout(() => this.setState({textVal: i-1}))
-        }}>{this.state.textVal}</div>
+        <h2 className='game-text' onClick={() => {
+          if (this.state.isReady) {
+            this.setState({textVal: '3'});
+            setTimeout(() => this.setState({textVal: '2'}), 1000)
+            setTimeout(() => this.setState({textVal: '1'}), 2000);
+            setTimeout(() => this.setState({textVal: 'GO!'}), 3000);
+          }
+        }}>{this.state.textVal}</h2>
         <Ball />
       </div>
     );

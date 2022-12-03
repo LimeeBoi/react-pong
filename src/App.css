@@ -5,6 +5,7 @@
   position: absolute;
   width: 100px;
   height: 60px;
+  text-align: center;
 }
 
 .slider-tab {
@@ -12,29 +13,21 @@
   width: 40px;
   height: 15px;
   top: 0%;
+  color: lightblue;
   background-color: rgb(30, 30, 30);
   text-align: center;
   font-family: source-code-pro, Menlo, Monaco, Consolas, monospace;
   border-bottom-left-radius: 20%;
   border-bottom-right-radius: 20%;
-}
-
-.game-link  {
-  position: absolute;
-  left: 30%;
-}
-
-.help-page-link {
-  position: absolute; 
-  right: 30%;
-}
-
-.app-outlet {
-  position: absolute;
-  top: 10%;
+  cursor: pointer;
 }
 
 .slider-tab-icon {
   height: 12px;
   width: 12px;
+}
+
+.app-outlet {
+  position: absolute;
+  top: 10%;
 }
