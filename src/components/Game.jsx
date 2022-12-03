@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import '../Game.css';
 import Paddle from './Paddle';
 import Ball from './Ball';
 
@@ -11,10 +12,11 @@ class Game extends Component {
       mounted: false, //react doesn't let u setState() when the component isn't mounted :[
       keysDown: [], // *self-explanetory*
       numIntervals: 0,
+      textVal: null, // info-box text value
     };
     
     setTimeout(() => { // Lets the interval below accelerate (for some reason that happens)
-      this.props.setText('Ready.');
+      if(this.state.mounted) this.setState({textVal: 'Ready.'});
       window.addEventListener('keydown', (event) => { //listen for keys down
         const {moveFunc0, moveFunc1} = this;
         const {keysDown, numIntervals, mounted} = this.state;
@@ -50,9 +52,6 @@ class Game extends Component {
       case 'moveFunc1':
         this.moveFunc1 = func;
         break;
-      case 'setInfoText':
-        this.setInfoText = func;
-        break;
       default: break;
     }
   }
@@ -60,8 +59,11 @@ class Game extends Component {
   render() {
     return (
       <div className='game'>
-        <Paddle className='Paddle0' keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
-        <Paddle className='Paddle1' keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
+        <Paddle className='paddle0' keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
+        <Paddle className='paddle1' keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
+        <div className='game-text' onClick={() => {
+          for (let i=0; i<3; i++) setTimeout(() => this.setState({textVal: i-1}))
+        }}>{this.state.textVal}</div>
         <Ball />
       </div>
     );

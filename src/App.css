@@ -1,29 +1,3 @@
-
-.Paddle0 {left: 8%}
-.Paddle1 {right: 8%}
-
-.info-box-text {
-  position: absolute;
-  color: white;
-  left: 45.5%;
-  top: 90%;
-  text-align: center;
-  border-style: inset;
-  border-color: white;
-  width: 160px;
-  height: 30px;
-}
-
-.ball {
-  background-color: white;
-  position: absolute;
-  border-radius: 50%;
-  height: 25px;
-  width: 25px;
-  top: 50%;
-  left: 50%;
-}
-
 .slider-body {
   background-color: rgb(30, 30, 30);
   border-bottom-left-radius: 20%;
@@ -37,6 +11,7 @@
   position: absolute;
   width: 40px;
   height: 15px;
+  top: 0%;
   background-color: rgb(30, 30, 30);
   text-align: center;
   font-family: source-code-pro, Menlo, Monaco, Consolas, monospace;
@@ -44,16 +19,22 @@
   border-bottom-right-radius: 20%;
 }
 
+.game-link  {
+  position: absolute;
+  left: 30%;
+}
+
+.help-page-link {
+  position: absolute; 
+  right: 30%;
+}
+
+.app-outlet {
+  position: absolute;
+  top: 10%;
+}
+
 .slider-tab-icon {
   height: 12px;
   width: 12px;
 }
-
-.help-page {
-  background-color: #fff;
-}
-
-@keyframes pull-up-slider-tab {from {top: 60px} to {top: 0px}}
-@keyframes pull-down-slider-tab {from {top: 0px} to {top: 60px}}
-@keyframes pull-up-slider-body {from {top: 0px} to {top: -60px}}
-@keyframes pull-down-slider-body {from {top: -60px} to {top: 0px}}
