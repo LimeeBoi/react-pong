@@ -11,7 +11,7 @@ function App() {
         <Route path='/' element={
           <>
             <nav className='menu'>
-              <Slider left={43} openTimeLength={.8} sliderBody={
+              <Slider left={45} openTimeLength={.8} sliderBody={
                 <>
                   <Link to='/Game' className='game-link'>Pong Game</Link>
                   <br/>

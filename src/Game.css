@@ -4,13 +4,14 @@
 .game-text {
   position: absolute;
   color: white;
-  left: 45.5%;
+  left: 43%;
   top: 90%;
   text-align: center;
   border-style: inset;
   border-color: white;
   width: 160px;
   height: 30px;
+  cursor: pointer;
 }
 
 .ball {
@@ -19,8 +20,6 @@
   border-radius: 50%;
   height: 25px;
   width: 25px;
-  top: 50%;
-  left: 50%;
 }
 
 @keyframes pull-up-slider-tab {from {top: 60px} to {top: 0px}}

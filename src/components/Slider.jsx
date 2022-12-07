@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Slider({ left, openTimeLength, sliderBody}) {
+function Slider({ left, openTimeLength, sliderBody }) {
   const [isOpen, setIsOpen] = useState(null); // *is open*
   const [yOffset, setYOffset] = useState(null); // keep track of the y val for the slider :>
   const [hbc, setHbc] = useState(null); // has been clicked
@@ -22,7 +22,15 @@ function Slider({ left, openTimeLength, sliderBody}) {
         animation: hbc ? `pull-${isOpen ? 'down' : 'up'}-slider-tab ${openTimeLength}s ease` : null, // calculate what animation to 
       }}>\v/</div>
     </>
-  )
+  );
 };
+
+  ;;;;
+;;    ;;  
+;;
+  ;;;;     
+      ;;
+;;    ;;
+  ;;;;
 
 export default Slider;

@@ -16,6 +16,8 @@ function HelpPage() {
             <li>Hold down 'd' to move the left paddle down quckly</li>
             <li>And so on for the right paddle: o = up, l = down, i = quick up, k = quick down</li>
           </ul>
+          How to start the game: <br />
+          All you have to do to start the game of pong is to click the box on the botton of the page that says 'ready'.
         </div>
       </h2>
     </div>

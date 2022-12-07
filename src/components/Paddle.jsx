@@ -37,7 +37,7 @@ class Paddle extends Component {
 
   render() {
     return (
-      <div className={this.props.className} style={{ // Classic paddle CSS :>
+      <div className={this.props.className} ref={this.props.ref} style={{ // Classic paddle CSS :>
         display: 'block',
         position: 'absolute',
         backgroundColor: 'white', // erm... just plain css

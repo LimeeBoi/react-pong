@@ -23,13 +23,3 @@
   border-bottom-right-radius: 20%;
   cursor: pointer;
 }
-
-.slider-tab-icon {
-  height: 12px;
-  width: 12px;
-}
-
-.app-outlet {
-  position: absolute;
-  top: 10%;
-}
