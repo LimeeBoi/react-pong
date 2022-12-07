@@ -17,7 +17,7 @@ function Slider({ left, openTimeLength, sliderBody}) {
         if (isOpen) setTimeout(() => {setYOffset(0)}, openTimeLength * 1000 - 20); // If the slider is clicked, toggle yOffset
         else setTimeout(() => {setYOffset(60)}, openTimeLength * 1000 - 20);
       }} style={{
-        left: left + 2.88 + '%',
+        left: left + '%',
         top: yOffset + 'px',
         animation: hbc ? `pull-${isOpen ? 'down' : 'up'}-slider-tab ${openTimeLength}s ease` : null, // calculate what animation to 
       }}>\v/</div>

@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route, Link, Outlet } from 'react-router-dom';
 import '../App.css';
 import Game from './Game';
-import HelpPage from './HelpPage'
 import Slider from './Slider';
+import HelpPage from './HelpPage'
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <Route path='/' element={
           <>
             <nav className='menu'>
-              <Slider left={46} openTimeLength={.8} sliderBody={
+              <Slider left={43} openTimeLength={.8} sliderBody={
                 <>
                   <Link to='/Game' className='game-link'>Pong Game</Link>
                   <br/>
@@ -19,7 +19,7 @@ function App() {
                   <br/>
                   <Link to='/' className='home-link'>Home</Link>
                 </>
-              }/>
+              }/> 
               <Outlet className='app-outlet'/>
             </nav>
           </>

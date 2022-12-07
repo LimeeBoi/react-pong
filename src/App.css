@@ -12,6 +12,8 @@
   position: absolute;
   width: 40px;
   height: 15px;
+  margin-left: 32px;
+  margin-right: 32px;
   top: 0%;
   color: lightblue;
   background-color: rgb(30, 30, 30);
