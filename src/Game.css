@@ -1,5 +1,12 @@
-.paddle0 {left: 8%}
-.paddle1 {right: 8%}
+.paddle {
+  display: block;
+  position: absolute;
+  background-color: white;
+  height: 100px;
+  width: 17px;
+}
+#paddle0 {left: 8%}
+#paddle1 {right: 8%}
 
 .game-text {
   position: absolute;

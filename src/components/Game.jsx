@@ -1,4 +1,4 @@
-import { Component, createRef } from 'react';
+import { Component } from 'react';
 import '../Game.css';
 import Paddle from './Paddle';
 import Ball from './Ball';
@@ -14,7 +14,6 @@ class Game extends Component {
       numIntervals: 0,
       textVal: 'hold on...', // info-box text value
       isReady: false,
-      paddleRef: createRef(),
     };
     
     setTimeout(() => { // Lets the interval below accelerate (for some reason that happens)
@@ -64,8 +63,8 @@ class Game extends Component {
   render() {
     return (
       <div className='game'>
-        <Paddle className='paddle0' ref={this.paddleRef} keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
-        <Paddle className='paddle1' keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
+        <Paddle id='paddle0' keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
+        <Paddle id='paddle1' keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
         <h2 className='game-text' onClick={() => {
           if (this.state.isReady) {
             this.setState({textVal: '3'});
@@ -74,7 +73,7 @@ class Game extends Component {
             setTimeout(() => this.setState({textVal: 'GO!'}), 3000);
           }
         }}>{this.state.textVal}</h2>
-        <Ball paddleStyle={{width: 'idk'}} />
+        <Ball paddleStyle={{width: '17px', height: '100px'}} />
       </div>
     )
   }

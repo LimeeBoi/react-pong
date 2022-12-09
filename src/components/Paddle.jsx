@@ -1,9 +1,9 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 
 class Paddle extends Component {
   constructor(props) {
     super(props);
-    this.props.getMoveFunc(this.move, this.props.className === 'paddle0' ? 'moveFunc0' : 'moveFunc1'); // Give our move func to the Game component.
+    this.props.getMoveFunc(this.move, this.props.id === 'paddle0' ? 'moveFunc0' : 'moveFunc1'); // Give our move func to the Game component.
     //this.colissionLine =
 
     this.state = {
@@ -35,17 +35,8 @@ class Paddle extends Component {
     }
   }
 
-  render() {
-    return (
-      <div className={this.props.className} ref={this.props.ref} style={{ // Classic paddle CSS :>
-        display: 'block',
-        position: 'absolute',
-        backgroundColor: 'white', // erm... just plain css
-        height: '100px',
-        width: '17px',
-        top: this.state.y + 'px', // PUT THE BIG SWITCH STATEMENT ABOVE TO USE
-      }}/>
-    );
+  render() { //                                                 Let the paddle MOVE  \/
+    return <div id={this.props.id} className='paddle' ref={this.props.ref} style={{top: this.state.y + 'px'}}/>
   }
 }
 

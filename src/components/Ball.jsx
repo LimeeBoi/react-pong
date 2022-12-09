@@ -7,13 +7,21 @@ class Ball extends Component { // STILL MAKING THIS COMPONENT
       y: 50,
       x: 49,
       angle: 45,
-      paddleWidth: setTimeout(() => this.props.paddleStyle.width, 500),
+      mounted: false, 
+      paddleWidth: setTimeout(() => this.props.paddleStyle.width, 50), // Get paddle's height...
+      paddleHeight: setTimeout(() => this.props.paddleStyle.height, 50), // and height
     }
+  }
+
+  componentDidMount = () => {
+    setTimeout(() => {
+      this.setState({mounted: true});
+    }, 500);
   }
 
   render() {
     return (
-      <div className='ball' ref='ball' style={{
+      <div className='ball' style={{
         top: this.state.y + '%',
         left: this.state.x + '%',
       }}/>
