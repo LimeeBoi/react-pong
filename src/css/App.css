@@ -1,0 +1,68 @@
+
+.home-title {
+  background-color: black;
+  position: absolute;
+  width: 500px;
+  height: 80px;
+  color: white;
+  border-color: white;
+  border-style: ridge;
+  border-width: 5px;
+  font-size: 60px;
+  font-weight: 550;
+  font-family:'Courier New', Courier, monospace;
+  text-align: center;
+  margin: none;
+  top: 100px;
+  left: 30%;
+}
+ 
+.home-body {
+  font-size: 900px;
+  font-weight: 900;
+  position: absolute;
+  top: -120px;
+  left: 30%;
+  margin: 0px;
+  animation: infinite .5s linear colorStuff;
+  height: 0px;
+  z-index: -200;
+  cursor: default;
+}
+
+@keyframes colorStuff {
+  0% {color: red}
+  18% {color: orange}
+  36% {color: yellow}
+  54% {color: green}
+  72% {color: blue}
+  90% {color: purple}
+  to {color: red}
+}
+
+.slider-body {
+  background-color: rgb(30, 30, 30);
+  border-bottom-left-radius: 20%;
+  border-bottom-right-radius: 20%;
+  position: absolute;
+  width: 100px;
+  height: 60px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.slider-tab {
+  position: absolute;
+  width: 40px;
+  height: 20px;
+  margin-left: 32px;
+  margin-right: 32px;
+  top: 0%;
+  color: lightblue;
+  background-color: rgb(30, 30, 30);
+  text-align: center;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, monospace;
+  border-bottom-left-radius: 20%;
+  border-bottom-right-radius: 20%;
+  cursor: pointer;
+}

@@ -13,7 +13,7 @@ function Slider({ left, openTimeLength, sliderBody }) {
       }}>{sliderBody}</div>
       <div className='slider-tab' onClick={() => {
         setIsOpen(!isOpen);
-        setHbc(true);
+        setHbc(true); 
         if (isOpen) setTimeout(() => {setYOffset(0)}, openTimeLength * 1000 - 20); // If the slider is clicked, toggle yOffset
         else setTimeout(() => {setYOffset(60)}, openTimeLength * 1000 - 20);
       }} style={{
@@ -23,7 +23,7 @@ function Slider({ left, openTimeLength, sliderBody }) {
       }}>\v/</div>
     </>
   );
-};
+}
 
   ;;;;
 ;;    ;;  

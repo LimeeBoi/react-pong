@@ -1,4 +1,4 @@
-import '../HelpPage.css';
+import '../css/HelpPage.css';
 
 function HelpPage() {
   return (
@@ -6,7 +6,7 @@ function HelpPage() {
       <h1 className='hp-title' >React Games Help Page</h1>
       <h2 className='hp-pong-header'>
         Pong
-        <div className='hp-pong-parag'>
+        <div className='hp-pong-parag'> 
           This is a Pong game made with react  :` <br /> <br />
           How to move the paddles:
           <ul>

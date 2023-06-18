@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import '../Game.css';
+import '../css/Game.css';
 import Paddle from './Paddle';
 import Ball from './Ball';
 
