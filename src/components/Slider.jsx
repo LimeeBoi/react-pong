@@ -31,6 +31,6 @@ function Slider({ left, openTimeLength, sliderBody }) {
   ;;;;     
       ;;
 ;;    ;;
-  ;;;;
+  ;;;;  
 
 export default Slider;

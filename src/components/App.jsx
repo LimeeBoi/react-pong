@@ -12,23 +12,21 @@ function App() {
         <Routes>
           <Route path='/' element={
             <>
-              <nav className='menu'>
                 <Slider left={45} openTimeLength={.8} sliderBody={
                   <>
                     <Link to='/Game' className='game-link'>Pong Game</Link>
                     <br/>
                     <Link to='/HelpPage' className='help-page-link'>Help Page</Link>
                     <br/>
-                    <Link to='/Home' className='home-link'>Home</Link>
+                    <Link to='/' className='home-link'>Home</Link>
                   </>
                 }/> 
                 <Outlet className='app-outlet'/>
-              </nav>
             </>
           }>
             <Route path='Game' element={<Game />} />
             <Route path='HelpPage' element={<HelpPage />} />
-            <Route path='Home' element={<Home />} />
+            <Route path='' element={<Home />} />
           </Route>
         </Routes>
       </BrowserRouter>

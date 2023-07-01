@@ -8,13 +8,13 @@ class Ball extends Component { // STILL MAKING THIS COMPONENT
       x: 49,
       angle: 45,
       mounted: false, 
-      paddleWidth: setTimeout(() => this.props.paddleStyle.width, 50), // Get paddle's height...
-      paddleHeight: setTimeout(() => this.props.paddleStyle.height, 50), // and height
+      paddleWidth: setTimeout(() => this.props.paddleDims.width, 50), // Get paddle's width...
+      paddleHeight: setTimeout(() => this.props.paddleDims.height, 50), // and height
     }
   }
 
-  componentDidMount = () => {
-    setTimeout(() => {
+  componentDidMount = () => { // I hate this so much that my brain decided it would be better to just not care about it
+    setTimeout(() => { // well I'll copy n paste this from now on :]
       this.setState({mounted: true});
     }, 500);
   }

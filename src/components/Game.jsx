@@ -11,7 +11,7 @@ class Game extends Component {
     this.state = {
       mounted: false, //react doesn't let u setState() when the component isn't mounted :[
       keysDown: [], // *self-explanetory*
-      numIntervals: 0,
+      numIntervals: 0, // tells how many interval made
       textVal: 'hold on...', // info-box text value
       isReady: false,
     };
@@ -23,7 +23,7 @@ class Game extends Component {
         
         if (!keysDown.find(el => el === event.key)) keysDown.push(event.key); // push key detected to keysDown arr if key is not already in keysDown arr
           const keyListener = setInterval(function() { // made an interval so paddle movements look animated :)
-            if (!keysDown || numIntervals > 3) clearInterval(keyListener);
+            if (!keysDown || numIntervals > 3) clearInterval(keyListener); // prevents too many intervals existing and the paddles going lightspeed mode.
             moveFunc0(keysDown, ['w', 'e', 's', 'd']);
             moveFunc1(keysDown, ['o', 'i', 'l', 'k']);
           }, 10);
@@ -73,7 +73,7 @@ class Game extends Component {
             setTimeout(() => this.setState({textVal: 'GO!'}), 3000);
           }
         }}>{this.state.textVal}</h2>
-        <Ball paddleStyle={{width: '17px', height: '100px'}} />
+        <Ball paddleDims={{width: '17px', height: '100px'}} /> 
       </div>
     )
   }
