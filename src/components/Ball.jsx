@@ -3,12 +3,13 @@ import { Component } from 'react';
 class Ball extends Component { // STILL MAKING THIS COMPONENT
   constructor(props) {
     super(props);
-    this.state = { // in percent (x%, y%)
+    this.state = { // position in percent (x%, y%)
       y: 50,
       x: 49,
-      angle: 45,
+      direction: 0, // 0 is to top-right, 1 is to bottom-right, 2 is to bottom-left, and 3 is to top-left
       mounted: false, 
-      paddleWidth: setTimeout(() => this.props.paddleDims.width, 50), // Get paddle's width...
+      isGoing: this.props.isGoing,
+      paddleWidth: setTimeout(() => this.props.paddleDims.width, 50), // Get paddle's width... btw dims is short for dimensions
       paddleHeight: setTimeout(() => this.props.paddleDims.height, 50), // and height
     }
   }
@@ -18,8 +19,9 @@ class Ball extends Component { // STILL MAKING THIS COMPONENT
       this.setState({mounted: true});
     }, 500);
   }
-
+  
   render() {
+    if (this.state.isGoing) console.log('eee');
     return (
       <div className='ball' style={{
         top: this.state.y + '%',

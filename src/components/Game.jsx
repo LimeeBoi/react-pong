@@ -14,6 +14,7 @@ class Game extends Component {
       numIntervals: 0, // tells how many interval made
       textVal: 'hold on...', // info-box text value
       isReady: false,
+      isGoing: false,
     };
     
     setTimeout(() => { // Lets the interval below accelerate (for some reason that happens)
@@ -23,11 +24,11 @@ class Game extends Component {
         
         if (!keysDown.find(el => el === event.key)) keysDown.push(event.key); // push key detected to keysDown arr if key is not already in keysDown arr
           const keyListener = setInterval(function() { // made an interval so paddle movements look animated :)
-            if (!keysDown || numIntervals > 3) clearInterval(keyListener); // prevents too many intervals existing and the paddles going lightspeed mode.
-            moveFunc0(keysDown, ['w', 'e', 's', 'd']);
+            if (!keysDown || numIntervals > 3) clearInterval(keyListener); // prevents too many intervals existing and the paddles going lightspeed.
+            moveFunc0(keysDown, ['w', 'e', 's', 'd']); // controls
             moveFunc1(keysDown, ['o', 'i', 'l', 'k']);
           }, 10);
-          if (mounted) this.setState({numIntervals: numIntervals+1});
+          if (mounted) this.setState({numIntervals: numIntervals+1}); // says to everyone that an interval was born
       });
       window.addEventListener('keyup', (event) => {
         const {keysDown} = this.state;
@@ -70,10 +71,15 @@ class Game extends Component {
             this.setState({textVal: '3'});
             setTimeout(() => this.setState({textVal: '2'}), 1000)
             setTimeout(() => this.setState({textVal: '1'}), 2000);
-            setTimeout(() => this.setState({textVal: 'GO!'}), 3000);
+            setTimeout(() => {
+              this.setState({
+                textVal: 'GO!',
+                isGoing: true,
+              });
+            }, 3000);
           }
         }}>{this.state.textVal}</h2>
-        <Ball paddleDims={{width: '17px', height: '100px'}} /> 
+        <Ball paddleDims={{width: '17px', height: '100px'}} getGoFunc={this.getFunc} /> 
       </div>
     )
   }
