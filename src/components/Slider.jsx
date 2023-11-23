@@ -20,17 +20,17 @@ function Slider({ left, openTimeLength, sliderBody }) {
         left: left + '%',
         top: yOffset + 'px',
         animation: hbc ? `pull-${isOpen ? 'down' : 'up'}-slider-tab ${openTimeLength}s ease` : null, // calculate what animation to 
-      }}>\v/</div>
+      }}>&#11032;</div>
     </>
   );
 }
 
-  ;;;;
-;;    ;;  
-;;
-  ;;;;     
-      ;;
-;;    ;;
-  ;;;;  
+;    ;;;;    ;;    ;;    ;;;;    ;
+;  ;;    ;;  ;;    ;;  ;;    ;;  ;
+;  ;;        ;;    ;;  ;;        ;
+;    ;;;;    ;;    ;;    ;;;;    ;
+;        ;;  ;;    ;;        ;;  ;
+;  ;;    ;;  ;;    ;;  ;;    ;;  ;
+;    ;;;;      ;;;;      ;;;;    ;
 
 export default Slider;

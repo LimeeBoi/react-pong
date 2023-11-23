@@ -4,20 +4,21 @@ class Paddle extends Component {
   constructor(props) {
     super(props);
     this.props.getMoveFunc(this.move, this.props.id === 'paddle0' ? 'moveFunc0' : 'moveFunc1'); // Give our move func to the Game component.
-    //this.colissionLine =
-
+    this.props.getCollisionLines(() => this.state.colissionLine, this.props.id === 'paddle0' ? 'colLine0' : 'colLine1');
     this.state = {
+      id: this.props.id,
       mounted: false,
       y: 350, // yPosition of paddle 
-      delta: 1.2, // Step length
+      delta: 1, // Step length
       fastDelta: 2, // Faster step length
+      colissionLine: [14357, 1014530],
     };
   }
 
   componentDidMount() {
     setTimeout(() => {
       this.setState({mounted: true}) // annoying mounting checker
-    }, 500);
+    });
   }
 
   move = (keyArr, keyBindArr) => { // keyBindArr: [moveUp, MoveQuicklyUp, moveDown, MoveQuicklyDown]
@@ -35,8 +36,18 @@ class Paddle extends Component {
     }
   }
 
-  render() { //                                                 Let the paddle MOVE  \/
-    return <div id={this.props.id} className='paddle' ref={this.props.ref} style={{top: this.state.y + 'px'}}/>
+  render() {
+    const ref = React.ref
+    // this.setState({
+    //   colissionLine: [
+    //     ref.current.style.top - ref.current.style.height,
+    //     ref.current.style.left + ref.current.style.width,
+    //   ]
+    // });
+    setTimeout(() => {
+      console.log(ref);
+    });
+    return <div id={this.props.id} className='paddle' ref={this.ref} style={{top: this.state.y + 'px'}}/>
   }
 }
 

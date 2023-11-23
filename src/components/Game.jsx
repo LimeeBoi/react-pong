@@ -8,13 +8,14 @@ class Game extends Component {
     super(props);
     this.moveFunc0 = () => {}; //funcs that will be replaced by a moving func that moves a child component up :]
     this.moveFunc1 = () => {}; // same ^; except moves component down
+    this.colLine0 = () => {};
+    this.colLine1 = () => {};
     this.state = {
       mounted: false, //react doesn't let u setState() when the component isn't mounted :[
       keysDown: [], // *self-explanetory*
       numIntervals: 0, // tells how many interval made
       textVal: 'hold on...', // info-box text value
       isReady: false,
-      isGoing: false,
     };
     
     setTimeout(() => { // Lets the interval below accelerate (for some reason that happens)
@@ -44,42 +45,31 @@ class Game extends Component {
   componentDidMount() {
     setTimeout(() => { // annoying moundted detector so I don't have to deal with errors :]
       this.setState({mounted: true});
-    }, 500);
+    });
   }
 
-  getFunc = (func, funcDest) => { // Gets a func from the Paddle components so the Game component can control the paddles.
-    if (typeof func !== 'function') throw new Error('getFunc: first param not is not a function');
-    else if (typeof funcDest !== 'string') throw new Error('getFunc: second param is not a string');
-    else switch (funcDest) { // Tells getFunc where the function it's receiving from, and where to put it (funcDest arg)
-      case 'moveFunc0': 
-        this.moveFunc0 = func;
-        break;
-      case 'moveFunc1':
-        this.moveFunc1 = func;
-        break;
-      default: break;
-    }
-  }
-
+  // very satisfying string-to-variable-name thing
+  // btw this function is for the child components to turn in their functions so we can us it from here.
+  getFunc = (func, funcDest) => this[funcDest] = func;
+  
   render() {
+    setTimeout(() => console.table(this.colLine0(), this.colLine1()))
     return (
-      <div className='game'>
-        <Paddle id='paddle0' keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
-        <Paddle id='paddle1' keysDown={this.state.keysDown}  getMoveFunc={this.getFunc} />
+      <div className='game'> 
+        <Paddle id='paddle0' getMoveFunc={this.getFunc} getCollisionLines={this.getFunc} /> 
+        <Paddle id='paddle1' getMoveFunc={this.getFunc} getCollisionLines={this.getFunc} /> 
         <h2 className='game-text' onClick={() => {
           if (this.state.isReady) {
             this.setState({textVal: '3'});
             setTimeout(() => this.setState({textVal: '2'}), 1000)
             setTimeout(() => this.setState({textVal: '1'}), 2000);
             setTimeout(() => {
-              this.setState({
-                textVal: 'GO!',
-                isGoing: true,
-              });
+              this.setState({textVal: 'GO!'});
+              this.goBall();
             }, 3000);
           }
         }}>{this.state.textVal}</h2>
-        <Ball paddleDims={{width: '17px', height: '100px'}} getGoFunc={this.getFunc} /> 
+        <Ball getGoBallFunc={this.getFunc} /> 
       </div>
     )
   }

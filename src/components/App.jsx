@@ -19,6 +19,8 @@ function App() {
                     <Link to='/HelpPage' className='help-page-link'>Help Page</Link>
                     <br/>
                     <Link to='/' className='home-link'>Home</Link>
+                    <br/>
+                    <Link to='hello-there-I-am-existing-as-eeeeeeeeeee' className='e'>e</Link>
                   </>
                 }/> 
                 <Outlet className='app-outlet'/>
